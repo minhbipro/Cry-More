@@ -22,8 +22,11 @@ Sau đó sẽ được hash với signkey đã được server gen ra ở trên 
 Sau đó được nối chuỗi với thông tin thanh toán, encode base64 và đẩy về phía người dùng
 
 **payment += b'&sign=%s' % signature.encode() (2)**
+
 **self.request.sendall(b'Your order: ')**
+
 **self.request.sendall(b64encode(payment))**
+
 **self.request.sendall(b'\n')**
 
 Khi mình đọc đến đây lập tức nghĩ ra đây là hash length extension attack vì đoạn hash này thông tin payment nằm ở phía sau của key và người dùng biết được đoạn dữ liệu ở trước đó.
