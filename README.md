@@ -16,6 +16,7 @@ Tiếp theo sẽ là 2 function quan trọng nhất là order và confirm:
 Khi ta chọn một item bất kì để thanh toán nó sẽ được lưu lại thông tin gồm tên sản phẩm, giá và thời gian.
 Sau đó sẽ được hash với signkey đã được server gen ra ở trên qua câu lệnh sau
 **signature = sha512(self.signkey+payment).hexdigest()  (1)**
+
 *Mọi người chú ý thứ tự thông tin được hash*
 Sau đó được nối chuỗi với thông tin thanh toán, encode base64 và đẩy về phía người dùng
 
