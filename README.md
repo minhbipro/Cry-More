@@ -60,6 +60,8 @@ Tuy nhiên ta sẽ phải bruteforce phần padding từ 8-32 bytes
 payload: product=Fowl x 3&price=1&time=1636125992.77\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x98&product=FLAG&sign=f8df4f2491d0f085d6bdc3d40e89bdb3d839cc56bb436ce2e5a2798a0f889a261ad29893dc7908cf75c515b365fe086a3166ee15698996747b7c63d7956ae7a5
 
 encode lại và gửi về server:
+![image](https://user-images.githubusercontent.com/66832698/140539393-b4212bb3-61da-40e1-b119-b93cffcac606.png)
+
 ![image](https://user-images.githubusercontent.com/66832698/140532546-32dc6029-64cb-40ab-8ebb-3201b44d772b.png)
 tăng dần độ dài của khóa để bruteforce cho đến khi thành công.
 
