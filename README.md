@@ -37,15 +37,24 @@ Như các bạn đã biết thì hash là không thể dịch ngược vậy là
 
 **Khai thác**
 Sử dụng netcat để liên lạc với server và chọn bừa một gói bất kỳ để lấy mã hash và thông tin thanh toán:
+
 ![image](https://user-images.githubusercontent.com/66832698/140536601-11fdc315-e88e-4db1-aae1-999fc50917d5.png)
 decode bash64 ta sẽ được phần thông tin thanh toán:
+
 product=Fowl x 3&price=1&time=1636125992.77&sign=89917b5436c9956a10a59ce089d1e281b146c889c940579adaf8b9e55d133df9134b03453d92dda06fec24c61520a91720989c747a2cfd42a7983d69a4a8c955
+
 payload ta cần:
+
 product=Fowl x 3&price=1&time=1636125992.77[padding]&product=FLAG&sign=xxxxxxxxxxxxxxxxxx
+
 Có thể nhiều bạn sẽ thắc mắc tại sao không thay thế luôn phần **product=Fowl x 3** vì đó là điều không thể. Ta lợi dụng các tính mã hash để tạo ra payload với signkey mới và phần product ở phía sau sẽ được thay thế product=Fowl x 3.
+
 Mình sử dụng tool hashpump để tạo payload: https://github.com/bwall/HashPump
+
 Tuy nhiên ta sẽ phải bruteforce phần padding từ 8-32 bytes
+
 ![image](https://user-images.githubusercontent.com/66832698/140536456-a0cd9de1-501c-41a3-b4c7-3095a8ae673d.png)
+
 ở dòng trên sẽ là mã hash ta sẽ đẩy vào signkey, dòng dưới là dữ liệu đã được thay đổi
 
 payload: product=Fowl x 3&price=1&time=1636125992.77\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x98&product=FLAG&sign=f8df4f2491d0f085d6bdc3d40e89bdb3d839cc56bb436ce2e5a2798a0f889a261ad29893dc7908cf75c515b365fe086a3166ee15698996747b7c63d7956ae7a5
