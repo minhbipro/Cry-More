@@ -18,6 +18,7 @@ Sau đó sẽ được hash với signkey đã được server gen ra ở trên 
 **signature = sha512(self.signkey+payment).hexdigest()  (1)**
 
 *Mọi người chú ý thứ tự thông tin được hash*
+
 Sau đó được nối chuỗi với thông tin thanh toán, encode base64 và đẩy về phía người dùng
 
 **payment += b'&sign=%s' % signature.encode() (2)**
@@ -46,11 +47,15 @@ Mình sử dụng tool hashpump để tạo payload: https://github.com/bwall/Ha
 Tuy nhiên ta sẽ phải bruteforce phần padding từ 8-32 bytes
 ![image](https://user-images.githubusercontent.com/66832698/140536456-a0cd9de1-501c-41a3-b4c7-3095a8ae673d.png)
 ở dòng trên sẽ là mã hash ta sẽ đẩy vào signkey, dòng dưới là dữ liệu đã được thay đổi
+
 payload: product=Fowl x 3&price=1&time=1636125992.77\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x98&product=FLAG&sign=f8df4f2491d0f085d6bdc3d40e89bdb3d839cc56bb436ce2e5a2798a0f889a261ad29893dc7908cf75c515b365fe086a3166ee15698996747b7c63d7956ae7a5
+
 encode lại và gửi về server:
 ![image](https://user-images.githubusercontent.com/66832698/140532546-32dc6029-64cb-40ab-8ebb-3201b44d772b.png)
 tăng dần độ dài của khóa để bruteforce cho đến khi thành công.
+
 hơi đen đến payload thứ 27 mới thành công:
+
 ![image](https://user-images.githubusercontent.com/66832698/140538151-0db2f290-8d70-4bd2-ad6b-49078f3a24a2.png)
 ![image](https://user-images.githubusercontent.com/66832698/140538091-717a4cc2-031f-4776-8503-8230b9e5380a.png)
 
