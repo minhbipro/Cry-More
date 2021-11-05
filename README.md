@@ -35,7 +35,7 @@ Như các bạn đã biết thì hash là không thể dịch ngược vậy là
 
 Ở phần **(1)** các bạn chú ý vào thứ tự của phần hash, signkey sau đó mới tới thông tin thanh toán. Phần thanh toán và mã hash có chứa signkey ta hoàn toàn biết được do server đã gửi về phía người dùng. Từ đó ta sẽ chèn dữ liệu giả mạo vào để tạo ra block thứ n+1 với nội dung theo ý muốn.
 
-####**Khai thác**
+**Khai thác**
 Sử dụng netcat để liên lạc với server và chọn bừa một gói bất kỳ để lấy mã hash và thông tin thanh toán:
 ![image](https://user-images.githubusercontent.com/66832698/140536601-11fdc315-e88e-4db1-aae1-999fc50917d5.png)
 decode bash64 ta sẽ được phần thông tin thanh toán:
